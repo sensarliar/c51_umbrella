@@ -1,0 +1,178 @@
+C51 COMPILER V7.06   TIMER0                                                                03/31/2014 11:04:40 PAGE 1   
+
+
+C51 COMPILER V7.06, COMPILATION OF MODULE TIMER0
+OBJECT MODULE PLACED IN timer0.OBJ
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE timer0.c DEBUG OBJECTEXTEND
+
+stmt level    source
+
+   1          #include <STC12C5A.h>
+   2          #include <absacc.h>
+   3          #include <intrins.h>
+   4          #include <math.h>
+   5          #include <string.h>
+   6          
+   7          
+   8          #define uchar unsigned char     
+   9          #define uint unsigned int
+  10          #define ulong unsigned long
+  11          
+  12          void key_scan(void);
+  13          void motor_control(void);
+  14          
+  15          struct date
+  16          {
+  17          unsigned char hsec;
+  18          unsigned char sec;
+  19          }timer1a,timer1b,timer2a,timer2b,timer3a,timer3b,timer4a,timer4b;
+  20          
+  21          uchar lcd_dat;
+  22          
+  23          
+  24          extern  bit  st_tm4a;
+  25          extern  bit  st_tm4b;
+  26          extern  bit  st_tm3a;
+  27          extern  bit  st_tm3b;
+  28          extern  bit  st_tm2a;
+  29          extern  bit  st_tm2b;
+  30          extern  bit  st_tm1a;
+  31          extern  bit  st_tm1b;
+  32          
+  33          sbit    LED=P1^3;
+  34          sbit    LED1=P4^3;
+  35          extern  bit  dis_fresh;
+  36          
+  37          void init_timer0()
+  38          {
+  39   1         P4SW=0xff;
+  40   1         TMOD|=0X01;
+  41   1         TH0=0x3C;                            //如果时间要完全精确，需用12MHZ的晶振，25ms定时
+  42   1         TL0=0xB0;
+  43   1         EA=1;
+  44   1         ET0=1;
+  45   1         //TR0=1;
+  46   1      }
+  47          
+  48          void timer0() interrupt 1 using 1
+  49          {
+  50   1         
+  51   1         unsigned char num,num1;
+  52   1         CLK_DIV=0X00;
+  53   1         TH0=0x3C;                            //如果时间要完全精确，需用12MHZ的晶振,25ms定时
+  54   1         TL0=0xB0;
+  55   1         num++;
+C51 COMPILER V7.06   TIMER0                                                                03/31/2014 11:04:40 PAGE 2   
+
+  56   1         num1++;
+  57   1         lcd_dat++;
+  58   1         key_scan();             //按键扫描
+  59   1         
+  60   1                if(num==2)
+  61   1             {
+  62   2                   LED=0;
+  63   2                 }
+  64   1      
+  65   1             if(num==4)       //100ms计时+
+  66   1             { 
+  67   2               LED=1;
+  68   2                       /*
+  69   2                       st_tm3a=1;
+  70   2                       st_tm3b=1;
+  71   2                       st_tm4a=1;
+  72   2                       st_tm4b=1;
+  73   2                       st_tm2a=1;
+  74   2                       st_tm2b=1;
+  75   2                       st_tm1a=1;
+  76   2                       st_tm1b=1;
+  77   2                       */
+  78   2                        if(st_tm4a)      //如果工件3a计时标志为1，计时+0.1s
+  79   2                         {  
+  80   3                         if(++timer4a.sec>=100){timer4a.sec=0;timer4a.hsec++;}
+  81   3                 if(timer4a.hsec>=100){timer4a.hsec=0;}
+  82   3                         }
+  83   2      
+  84   2                        if(st_tm4b)       //如果工件3b计时标志为1，计时+0.1s
+  85   2                         {  
+  86   3                         if(++timer4b.sec>=100){timer4b.sec=0;timer4b.hsec++;}
+  87   3                 if(timer4b.hsec>=100){timer4b.hsec=0;}
+  88   3                         }
+  89   2      
+  90   2                        if(st_tm3a)      //如果工件3a计时标志为1，计时+0.1s
+  91   2                         {  
+  92   3                         if(++timer3a.sec>=100){timer3a.sec=0;timer3a.hsec++;}
+  93   3                 if(timer3a.hsec>=100){timer3a.hsec=0;}
+  94   3                         }
+  95   2      
+  96   2                        if(st_tm3b)       //如果工件3b计时标志为1，计时+0.1s
+  97   2                         {  
+  98   3                         if(++timer3b.sec>=100){timer3b.sec=0;timer3b.hsec++;}
+  99   3                 if(timer3b.hsec>=100){timer3b.hsec=0;}
+ 100   3                         }
+ 101   2      
+ 102   2      
+ 103   2                        if(st_tm2a)       //如果工件2a计时标志为1，计时+0.1s
+ 104   2                         {  
+ 105   3                         if(++timer2a.sec>=100){timer2a.sec=0;timer2a.hsec++;}
+ 106   3                 if(timer2a.hsec>=100){timer2a.hsec=0;}
+ 107   3                         }
+ 108   2      
+ 109   2                        if(st_tm2b)       //如果工件2b计时标志为1，计时+0.1s
+ 110   2                         {  
+ 111   3                         if(++timer2b.sec>=100){timer2b.sec=0;timer2b.hsec++;}
+ 112   3                 if(timer2b.hsec>=100){timer2b.hsec=0;}
+ 113   3                         }
+ 114   2      
+ 115   2                        if(st_tm1a)            //如果工件1a计时标志为1，计时+0.1s
+ 116   2                         {  
+ 117   3                         if(++timer1a.sec>=100){timer1a.sec=0;timer1a.hsec++;}
+C51 COMPILER V7.06   TIMER0                                                                03/31/2014 11:04:40 PAGE 3   
+
+ 118   3                 if(timer1a.hsec>=100){timer1a.hsec=0;}
+ 119   3                         }
+ 120   2      
+ 121   2                        if(st_tm1b)            //如果工件1b计时标志为1，计时+0.1s
+ 122   2                         {  
+ 123   3                         if(++timer1b.sec>=100){timer1b.sec=0;timer1b.hsec++;}
+ 124   3                 if(timer1b.hsec>=100){timer1b.hsec=0;}
+ 125   3                         }
+ 126   2      
+ 127   2                 num=0;
+ 128   2                 motor_control();    //工件动作时间控制，保持时间2.0s，反转0.3s控制
+ 129   2                               
+ 130   2                        
+ 131   2           }
+ 132   1      
+ 133   1               if(num1==20)
+ 134   1             {
+ 135   2                   LED1=0;
+ 136   2                 }
+ 137   1      
+ 138   1             if(num1==40)       //
+ 139   1             { 
+ 140   2               LED1=1;
+ 141   2                       num1=0;
+ 142   2                       }
+ 143   1      
+ 144   1      
+ 145   1              dis_fresh=1;     
+ 146   1              if(lcd_dat==5)
+ 147   1              {lcd_dat=1;}       
+ 148   1                
+ 149   1      }
+ 150          
+ 151          
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    326    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =     17       2
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

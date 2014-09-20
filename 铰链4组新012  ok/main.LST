@@ -1,0 +1,322 @@
+C51 COMPILER V7.06   MAIN                                                                  03/31/2014 11:04:40 PAGE 1   
+
+
+C51 COMPILER V7.06, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN main.OBJ
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE main.c DEBUG OBJECTEXTEND
+
+stmt level    source
+
+   1          /**************************************************************************** 
+   2          *       File: LCM240320.c
+   3          *       Description: LCD display
+   4          *       Created Date: 2011-7-26
+   5          *       Last Modified: 2011-7-26
+   6          *       Author: linda
+   7          *       Notes: None
+   8          *****************************************************************************/
+   9          //#include <reg52.h>
+  10          #include <STC12C5A.h>
+  11          #include <absacc.h>
+  12          #include <intrins.h>
+  13          #include <math.h>
+  14          #include <string.h>
+  15          
+  16          #define uint unsigned int
+  17          #define uchar unsigned char
+  18          sbit    LED=P1^3;
+  19          void WriteCommand(uchar Command);
+  20          void WriteData(uchar DData);
+  21          
+  22          uchar code numb[ ]=             {0x00,0x00,0x00,0x00,0x00,0x00,0x07,0x0F,0x1C,0x38,0x38,0x38,0x70,0x70,0x70,0x70,
+  23                                   0x70,0x70,0x70,0x70,0x70,0x38,0x38,0x18,0x1C,0x0F,0x07,0x00,0x00,0x00,0x00,0x00,
+  24                                                           0x00,0x00,0x00,0x00,0x00,0x00,0xE0,0xF0,0x38,0x1C,0x1C,0x1C,0x0E,0x0E,0x0E,0x0E,
+  25                                                           0x0E,0x0E,0x0E,0x0E,0x0E,0x1C,0x1C,0x1C,0x38,0xF0,0xE0,0x00,0x00,0x00,0x00,0x00,/*"0",0*//* (16 X 3
+             -2 , 黑体 )*/
+  26          
+  27                                   0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x01,0x03,0x1F,0x1F,0x01,0x01,0x01,0x01,
+  28                                                           0x01,0x01,0x01,0x01,0x01,0x01,0x01,0x01,0x01,0x01,0x01,0x00,0x00,0x00,0x00,0x00,
+  29                                                           0x00,0x00,0x00,0x00,0x00,0x00,0xC0,0xC0,0xC0,0xC0,0xC0,0xC0,0xC0,0xC0,0xC0,0xC0,
+  30                                                           0xC0,0xC0,0xC0,0xC0,0xC0,0xC0,0xC0,0xC0,0xC0,0xC0,0xC0,0x00,0x00,0x00,0x00,0x00,/*"1",0*//* (16 X 3
+             -2 , 黑体 )*/
+  31          
+  32                                   0x00,0x00,0x00,0x00,0x00,0x00,0x03,0x07,0x0E,0x0E,0x1C,0x1C,0x1C,0x1C,0x00,0x00,
+  33                                                           0x00,0x00,0x01,0x03,0x07,0x0E,0x1E,0x1C,0x38,0x3F,0x3F,0x00,0x00,0x00,0x00,0x00,
+  34                                                           0x00,0x00,0x00,0x00,0x00,0x00,0xE0,0xF0,0x38,0x1C,0x1C,0x1C,0x1C,0x1C,0x3C,0x38,
+  35                                                           0x70,0xE0,0xC0,0x80,0x00,0x00,0x00,0x00,0x00,0xFC,0xFC,0x00,0x00,0x00,0x00,0x00,/*"2",0*//* (16 X 3
+             -2 , 黑体 )*/
+  36          
+  37                                   0x00,0x00,0x00,0x00,0x00,0x00,0x07,0x0F,0x1C,0x1C,0x38,0x38,0x00,0x00,0x00,0x01,
+  38                                                           0x01,0x00,0x00,0x00,0x70,0x70,0x70,0x38,0x3C,0x1F,0x07,0x00,0x00,0x00,0x00,0x00,
+  39                                                           0x00,0x00,0x00,0x00,0x00,0x00,0xC0,0xF0,0x70,0x38,0x38,0x38,0x38,0x38,0x70,0xE0,
+  40                                                           0xF0,0x78,0x3C,0x1C,0x1C,0x1C,0x1C,0x3C,0x38,0xF0,0xC0,0x00,0x00,0x00,0x00,0x00,/*"3",0*//* (16 X 3
+             -2 , 黑体 )*/
+  41          
+  42                                   0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x01,0x03,0x03,0x06,0x0E,0x0C,0x1C,
+  43                                                           0x18,0x30,0x70,0x7F,0x7F,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,
+  44                                                           0x00,0x00,0x00,0x00,0x00,0x00,0x70,0xF0,0xF0,0xF0,0xF0,0x70,0x70,0x70,0x70,0x70,
+  45                                                           0x70,0x70,0x70,0xFE,0xFE,0x70,0x70,0x70,0x70,0x70,0x70,0x00,0x00,0x00,0x00,0x00,/*"4",0*//* (16 X 3
+             -2 , 黑体 )*/
+  46          
+  47                                   0x00,0x00,0x00,0x00,0x00,0x00,0x1F,0x1F,0x18,0x18,0x18,0x38,0x30,0x33,0x3F,0x3C,
+  48                                                           0x30,0x00,0x00,0x00,0x00,0x70,0x70,0x70,0x38,0x3C,0x1F,0x07,0x00,0x00,0x00,0x00,
+  49                                                           0x00,0x00,0x00,0x00,0x00,0x00,0xF8,0xF8,0x00,0x00,0x00,0x00,0x00,0xE0,0xF0,0x78,
+  50                                                           0x38,0x1C,0x1C,0x1C,0x1C,0x1C,0x1C,0x18,0x38,0x70,0xF0,0xC0,0x00,0x00,0x00,0x00,/*"5",0*//* (16 X 3
+C51 COMPILER V7.06   MAIN                                                                  03/31/2014 11:04:40 PAGE 2   
+
+             -2 , 黑体 )*/
+  51          
+  52                                   0x00,0x00,0x00,0x00,0x00,0x00,0x01,0x07,0x0E,0x0C,0x1C,0x1C,0x38,0x39,0x3B,0x3E,
+  53                                                           0x3C,0x38,0x38,0x38,0x38,0x38,0x18,0x1C,0x0E,0x07,0x03,0x00,0x00,0x00,0x00,0x00,
+  54                                                           0x00,0x00,0x00,0x00,0x00,0x00,0xF0,0xF8,0x1C,0x0E,0x0E,0x00,0x00,0xF0,0xF8,0x3C,
+  55                                                           0x1C,0x0E,0x0E,0x0E,0x0E,0x0E,0x0E,0x1C,0x3C,0xF8,0xF0,0x00,0x00,0x00,0x00,0x00,/*"6",0*//* (16 X 3
+             -2 , 黑体 )*/
+  56          
+  57                                   0x00,0x00,0x00,0x00,0x00,0x00,0x3F,0x3F,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,
+  58                                                           0x00,0x00,0x00,0x01,0x01,0x01,0x03,0x03,0x03,0x07,0x07,0x00,0x00,0x00,0x00,0x00,
+  59                                                           0x00,0x00,0x00,0x00,0x00,0x00,0xFC,0xFC,0x1C,0x3C,0x38,0x38,0x38,0x70,0x70,0x70,
+  60                                                           0xE0,0xE0,0xE0,0xC0,0xC0,0xC0,0x80,0x80,0x80,0x00,0x00,0x00,0x00,0x00,0x00,0x00,/*"7",0*//* (16 X 3
+             -2 , 黑体 )*/
+  61          
+  62                                   0x00,0x00,0x00,0x00,0x00,0x00,0x07,0x0F,0x1C,0x38,0x38,0x38,0x38,0x38,0x1C,0x0F,
+  63                                                           0x0F,0x3C,0x38,0x70,0x70,0x70,0x70,0x78,0x3C,0x1F,0x07,0x00,0x00,0x00,0x00,0x00,
+  64                                                           0x00,0x00,0x00,0x00,0x00,0x00,0xC0,0xE0,0x70,0x38,0x38,0x38,0x38,0x38,0x70,0xE0,
+  65                                                           0xE0,0x78,0x38,0x1C,0x1C,0x1C,0x1C,0x3C,0x78,0xF0,0xC0,0x00,0x00,0x00,0x00,0x00,/*"8",0*//* (16 X 3
+             -2 , 黑体 )*/
+  66          
+  67                                   0x00,0x00,0x00,0x00,0x00,0x00,0x07,0x0F,0x1E,0x1C,0x38,0x38,0x38,0x38,0x38,0x3C,
+  68                                                           0x1C,0x0F,0x07,0x00,0x00,0x00,0x38,0x38,0x1C,0x0F,0x07,0x00,0x00,0x00,0x00,0x00,
+  69                                                           0x00,0x00,0x00,0x00,0x00,0x00,0xE0,0xF0,0x38,0x1C,0x0C,0x0E,0x0E,0x0E,0x0E,0x1E,
+  70                                                           0x3E,0xEE,0xCE,0x0E,0x0E,0x1C,0x1C,0x38,0x78,0xF0,0xC0,0x00,0x00,0x00,0x00,0x00,/*"9",0*//* (16 X 3
+             -2 , 黑体 )*/
+  71          
+  72                                   0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,
+  73                                                           0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x1C,0x1C,0x1C,0x00,0x00,0x00,0x00,0x00,
+  74                                                           0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,
+  75                                                           0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00};/*".",0*//* (16 X 
+             -32 , 黑体 )*/
+  76          
+  77          
+  78          
+  79          unsigned  char bdata temp_flg,dis_flg;
+  80          
+  81          sbit  dis_all=temp_flg^6;
+  82          sbit  dis_fresh=dis_flg^0;
+  83          
+  84          extern  uchar  lcd_dat;
+  85          
+  86          extern  bit  zero_already4;
+  87          extern  bit  start_already4;
+  88          extern  bit  st_tm4a;
+  89          extern  bit  st_tm4b;
+  90          extern  bit  hold4;
+  91          
+  92          extern  bit  zero_already3;
+  93          extern  bit  start_already3;
+  94          extern  bit  st_tm3a;
+  95          extern  bit  st_tm3b;
+  96          extern  bit  hold3;
+  97          
+  98          extern  bit  zero_already2;
+  99          extern  bit  start_already2;
+ 100          extern  bit  st_tm2a;
+ 101          extern  bit  st_tm2b;
+ 102          extern  bit  hold2;
+ 103          
+ 104          extern  bit  zero_already1;
+ 105          extern  bit  start_already1;
+ 106          extern  bit  st_tm1a;
+C51 COMPILER V7.06   MAIN                                                                  03/31/2014 11:04:40 PAGE 3   
+
+ 107          extern  bit  st_tm1b;
+ 108          extern  bit  hold1;
+ 109          
+ 110          
+ 111          sbit zhengkong1=P1^0;                    
+ 112          sbit fankong1=P1^1;
+ 113          sbit dingdian1=P4^0;
+ 114          
+ 115          
+ 116          
+ 117          sbit zhengkong2=P2^3;                    
+ 118          sbit fankong2=P2^4;
+ 119          sbit dingdian2=P4^6;
+ 120          
+ 121          sbit zhengkong3=P1^4;                    
+ 122          sbit fankong3=P1^5;
+ 123          sbit dingdian3=P5^0;
+ 124          
+ 125          sbit zhengkong4=P3^0;                    
+ 126          sbit fankong4=P1^7;
+ 127          sbit dingdian4=P4^5;
+ 128          
+ 129          sbit zero1=P2^2;
+ 130          sbit zero2=P4^1;
+ 131          sbit zero3=P2^5;
+ 132          sbit zero4=P4^4;
+ 133          
+ 134          extern struct date
+ 135          {
+ 136          unsigned char hsec;
+ 137          unsigned char sec;
+ 138          }timer1a,timer1b,timer2a,timer2b,timer3a,timer3b,timer4a,timer4b;
+ 139          
+ 140          
+ 141          void init_timer0();
+ 142          void timer0();
+ 143          
+ 144          
+ 145          void init_timer1();
+ 146          void timer1();
+ 147          
+ 148          void LCD_Init();
+ 149          void LCD_Clear(uchar dat);
+ 150          
+ 151          void LCD_Write32x16Char1(uchar addx, uchar addy, uchar code *DData, uchar m);
+ 152          
+ 153          void io_init()
+ 154          {
+ 155   1          P4SW=0xff;  
+ 156   1      } 
+ 157          
+ 158          
+ 159          uint ql;
+ 160          
+ 161          
+ 162          /* 主程序 */
+ 163          main()
+ 164          { 
+ 165   1      
+ 166   1      CLK_DIV=0X00;     //外部石英晶体时钟，不分频.
+ 167   1      ql=(PCON&0X10);   //上电初始化判定位
+ 168   1      if(ql==0X10)      //如果为上电复位，显示初始化并清屏
+C51 COMPILER V7.06   MAIN                                                                  03/31/2014 11:04:40 PAGE 4   
+
+ 169   1      {
+ 170   2      PCON=0X20;        //(PCON&&0XEF);
+ 171   2      LCD_Init();
+ 172   2      dis_all=1;
+ 173   2      
+ 174   2      }
+ 175   1      
+ 176   1      
+ 177   1      
+ 178   1      io_init();                                                                                      
+ 179   1      
+ 180   1      IP|=0X80;
+ 181   1      dis_fresh=0;
+ 182   1      init_timer0();      //定时器0初始化，按键扫描，计时，动作时间控制
+ 183   1      init_timer1();      //显示控制
+ 184   1      
+ 185   1      
+ 186   1      while(1)
+ 187   1          {
+ 188   2                      if(dis_fresh==1)
+ 189   2                      {
+ 190   3                       
+ 191   3                       dis_fresh=0;
+ 192   3                       if(lcd_dat==1)
+ 193   3                       {
+ 194   4                       LCD_Write32x16Char1(240,11,numb,timer1a.sec%10);
+ 195   4                       LCD_Write32x16Char1(2,12,numb,timer1b.sec%10);
+ 196   4                       LCD_Write32x16Char1(48,18,numb,timer2a.sec%10);
+ 197   4                       LCD_Write32x16Char1(66,18,numb,timer2b.sec%10);
+ 198   4                       
+ 199   4                       LCD_Write32x16Char1(112,24,numb,timer3a.sec%10);
+ 200   4                       LCD_Write32x16Char1(130,24,numb,timer3b.sec%10);
+ 201   4                       LCD_Write32x16Char1(176,30,numb,timer4a.sec%10);
+ 202   4                       LCD_Write32x16Char1(194,30,numb,timer4b.sec%10);
+ 203   4                       
+ 204   4                       LCD_Write32x16Char1(236,11,numb,timer1a.sec/10);
+ 205   4                       LCD_Write32x16Char1(254,11,numb,timer1b.sec/10);
+ 206   4                       }
+ 207   3      
+ 208   3                       if(lcd_dat==2)
+ 209   3                       {
+ 210   4      
+ 211   4                       LCD_Write32x16Char1(44,18,numb,timer2a.sec/10);
+ 212   4                       LCD_Write32x16Char1(62,18,numb,timer2b.sec/10);
+ 213   4      
+ 214   4                       LCD_Write32x16Char1(126,24,numb,timer3b.sec/10);
+ 215   4                       LCD_Write32x16Char1(108,24,numb,timer3a.sec/10);
+ 216   4      
+ 217   4                       LCD_Write32x16Char1(172,30,numb,timer4a.sec/10);
+ 218   4                       LCD_Write32x16Char1(190,30,numb,timer4b.sec/10);
+ 219   4      
+ 220   4                       LCD_Write32x16Char1(234,11,numb,timer1a.hsec%10);
+ 221   4                       LCD_Write32x16Char1(252,11,numb,timer1b.hsec%10);
+ 222   4      
+ 223   4                       LCD_Write32x16Char1(42,18,numb,timer2a.hsec%10);
+ 224   4                       LCD_Write32x16Char1(60,18,numb,timer2b.hsec%10);
+ 225   4      
+ 226   4                       }
+ 227   3      
+ 228   3                       if(lcd_dat==3)
+ 229   3                       {
+ 230   4      
+C51 COMPILER V7.06   MAIN                                                                  03/31/2014 11:04:40 PAGE 5   
+
+ 231   4                       LCD_Write32x16Char1(106,24,numb,timer3a.hsec%10);
+ 232   4                       LCD_Write32x16Char1(124,24,numb,timer3b.hsec%10);
+ 233   4      
+ 234   4      
+ 235   4                       LCD_Write32x16Char1(170,30,numb,timer4a.hsec%10);
+ 236   4                       LCD_Write32x16Char1(188,30,numb,timer4b.hsec%10);
+ 237   4      
+ 238   4      
+ 239   4                   LCD_Write32x16Char1(232,11,numb,timer1a.hsec/10);
+ 240   4                       LCD_Write32x16Char1(250,11,numb,timer1b.hsec/10);
+ 241   4      
+ 242   4                       LCD_Write32x16Char1(40,18,numb,timer2a.hsec/10);
+ 243   4                       LCD_Write32x16Char1(58,18,numb,timer2b.hsec/10);
+ 244   4      
+ 245   4               LCD_Write32x16Char1(104,24,numb,timer3a.hsec/10);
+ 246   4                       LCD_Write32x16Char1(122,24,numb,timer3b.hsec/10);
+ 247   4      
+ 248   4                       }
+ 249   3      
+ 250   3                       if(lcd_dat==4)
+ 251   3                       {
+ 252   4      
+ 253   4                       LCD_Write32x16Char1(168,30,numb,timer4a.hsec/10);
+ 254   4                       LCD_Write32x16Char1(186,30,numb,timer4b.hsec/10);
+ 255   4      
+ 256   4      
+ 257   4                       LCD_Write32x16Char1(238,11,numb,10);
+ 258   4                       LCD_Write32x16Char1(0,12,numb,10);
+ 259   4                       LCD_Write32x16Char1(46,18,numb,10);       
+ 260   4                       LCD_Write32x16Char1(64,18,numb,10);
+ 261   4                       LCD_Write32x16Char1(110,24,numb,10);       
+ 262   4                       LCD_Write32x16Char1(128,24,numb,10);
+ 263   4                       LCD_Write32x16Char1(174,30,numb,10);           
+ 264   4                       LCD_Write32x16Char1(192,30,numb,10);
+ 265   4              
+ 266   4      
+ 267   4      
+ 268   4              WriteCommand(0x46);
+ 269   4              WriteData(0x10);
+ 270   4              WriteData(0x26);
+ 271   4      
+ 272   4         }
+ 273   3         
+ 274   3      
+ 275   3         }
+ 276   2         
+ 277   2                                          
+ 278   2          }
+ 279   1      }
+ 280          
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    839    ----
+   CONSTANT SIZE    =    704    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =      4    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)
