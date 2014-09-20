@@ -1,11 +1,11 @@
-C51 COMPILER V7.06   IOCONTROL                                                             03/31/2014 11:04:41 PAGE 1   
+C51 COMPILER V9.00   IOCONTROL                                                             09/20/2014 23:35:19 PAGE 1   
 
 
-C51 COMPILER V7.06, COMPILATION OF MODULE IOCONTROL
+C51 COMPILER V9.00, COMPILATION OF MODULE IOCONTROL
 OBJECT MODULE PLACED IN IOcontrol.OBJ
-COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE IOcontrol.c DEBUG OBJECTEXTEND
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE IOcontrol.c BROWSE DEBUG OBJECTEXTEND
 
-stmt level    source
+line level    source
 
    1          #include <STC12C5A.h>
    2          #include <absacc.h>
@@ -62,7 +62,7 @@ stmt level    source
   53          sbit zero2=P4^1;                //¹¤¼þ2µÄÁãµã£¬µÍÓÐÐ§
   54          sbit zero3=P2^5;                //¹¤¼þ3µÄÁãµã£¬µÍÓÐÐ§
   55          sbit zero4=P4^4;                //¹¤¼þ4µÄÁãµã£¬µÍÓÐÐ§
-C51 COMPILER V7.06   IOCONTROL                                                             03/31/2014 11:04:41 PAGE 2   
+C51 COMPILER V9.00   IOCONTROL                                                             09/20/2014 23:35:19 PAGE 2   
 
   56          
   57          
@@ -126,7 +126,7 @@ stmt level    source
  115          sbit  hold_already3=flag3^6;    //¹¤¼þ3£¬ÒÑ¾­´¦ÓÚ±£³Ö×´Ì¬£¬¸ßÓÐÐ§
  116          sbit  hold_already4=flag3^7;    //¹¤¼þ4£¬ÒÑ¾­´¦ÓÚ±£³Ö×´Ì¬£¬¸ßÓÐÐ§
  117          
-C51 COMPILER V7.06   IOCONTROL                                                             03/31/2014 11:04:41 PAGE 3   
+C51 COMPILER V9.00   IOCONTROL                                                             09/20/2014 23:35:19 PAGE 3   
 
  118          
  119          sbit  fan1_1s5=fan1s5^1;        //¹¤¼þ1£¬Àë¿ªÁãµã·´×ª1.5s
@@ -190,7 +190,7 @@ stmt level    source
  176   2              } 
  177   1      
  178   1                      if(astop4)                               //¹¤¼þ4Àë¿ªAÍ£Ö¹Î»
-C51 COMPILER V7.06   IOCONTROL                                                             03/31/2014 11:04:41 PAGE 4   
+C51 COMPILER V9.00   IOCONTROL                                                             09/20/2014 23:35:19 PAGE 4   
 
  179   1                {
  180   2                 astop_already4=0;
@@ -254,7 +254,7 @@ stmt level    source
  237   3             }
  238   2      
  239   2          if(!(keyfan||(!keystop)||(!keystart)||(!zhengkong4)||kong4||ding_already4))            //·´×ª°´¼ü4°´ÏÂ£¨ÔÚ·ÇÍ
-C51 COMPILER V7.06   IOCONTROL                                                             03/31/2014 11:04:41 PAGE 5   
+C51 COMPILER V9.00   IOCONTROL                                                             09/20/2014 23:35:19 PAGE 5   
 
              -£Ö¹¡¢·ÇÕý×ª¡¢·Ç¶¥µã×´Ì¬ÏÂ£©
  240   2                {
@@ -318,7 +318,7 @@ stmt level    source
  297   2                
  298   2              } 
  299   1      
-C51 COMPILER V7.06   IOCONTROL                                                             03/31/2014 11:04:41 PAGE 6   
+C51 COMPILER V9.00   IOCONTROL                                                             09/20/2014 23:35:19 PAGE 6   
 
  300   1                      if(astop3)                               //¹¤¼þ3Àë¿ªAÍ£Ö¹Î»
  301   1                {
@@ -382,7 +382,7 @@ stmt level    source
  358   3                         
  359   3             }
  360   2      
-C51 COMPILER V7.06   IOCONTROL                                                             03/31/2014 11:04:41 PAGE 7   
+C51 COMPILER V9.00   IOCONTROL                                                             09/20/2014 23:35:19 PAGE 7   
 
  361   2          if(!(keyfan||(!keystop)||(!keystart)||(!zhengkong3)||kong3||ding_already3))            //·´×ª°´¼ü3°´ÏÂ£¨ÔÚ·ÇÍ
              -£Ö¹¡¢·ÇÕý×ª¡¢·Ç¶¥µã×´Ì¬ÏÂ£©
@@ -446,7 +446,7 @@ stmt level    source
  418   1                {
  419   2                 astop_already2=0;
  420   2                }
-C51 COMPILER V7.06   IOCONTROL                                                             03/31/2014 11:04:41 PAGE 8   
+C51 COMPILER V9.00   IOCONTROL                                                             09/20/2014 23:35:19 PAGE 8   
 
  421   1      
  422   1              if(!(astop2||(!keystop)||astop_already2))          //¹¤¼þ2µ½´ïAÍ£Ö¹Î»
@@ -510,7 +510,7 @@ stmt level    source
  478   3      
  479   3                 counter2=0;
  480   3                 hold2=0;
-C51 COMPILER V7.06   IOCONTROL                                                             03/31/2014 11:04:41 PAGE 9   
+C51 COMPILER V9.00   IOCONTROL                                                             09/20/2014 23:35:19 PAGE 9   
 
  481   3                 fanzhan2=1;
  482   3                 start_already2=0;
@@ -574,7 +574,7 @@ stmt level    source
  539   2                }
  540   1      
  541   1              if(bstop1)                                      //¹¤¼þ1Àë¿ªBÍ£Ö¹Î»
-C51 COMPILER V7.06   IOCONTROL                                                             03/31/2014 11:04:41 PAGE 10  
+C51 COMPILER V9.00   IOCONTROL                                                             09/20/2014 23:35:19 PAGE 10  
 
  542   1                {
  543   2                 bstop_already1=0;
@@ -638,7 +638,7 @@ stmt level    source
  599   3                 timer1a.hsec=0;
  600   3                 timer1b.sec=0;
  601   3                 timer1b.hsec=0;
-C51 COMPILER V7.06   IOCONTROL                                                             03/31/2014 11:04:41 PAGE 11  
+C51 COMPILER V9.00   IOCONTROL                                                             09/20/2014 23:35:19 PAGE 11  
 
  602   3      
  603   3            }
@@ -702,7 +702,7 @@ stmt level    source
  661   1                {
  662   2                 st_tm2a=0;
  663   2                 st_tm2b=0;
-C51 COMPILER V7.06   IOCONTROL                                                             03/31/2014 11:04:41 PAGE 12  
+C51 COMPILER V9.00   IOCONTROL                                                             09/20/2014 23:35:19 PAGE 12  
 
  664   2                 zhengkong2=1;
  665   2                 fankong2=1;
@@ -766,7 +766,7 @@ stmt level    source
  723   1               {
  724   2               ding_already1=0;
  725   2               }
-C51 COMPILER V7.06   IOCONTROL                                                             03/31/2014 11:04:41 PAGE 13  
+C51 COMPILER V9.00   IOCONTROL                                                             09/20/2014 23:35:19 PAGE 13  
 
  726   1      
  727   1              if(!(dingdian2||ding_already2))          //¹¤¼þ2µ½´ï¶¥µã£¬µç»ú2Í£Ö¹·´×ª
@@ -830,7 +830,7 @@ stmt level    source
  785   2                               counter4++;
  786   2                               if(counter4==20)          //µç»ú4±£³ÖÊ±¼äÎª2.0s&&&
  787   2                               {
-C51 COMPILER V7.06   IOCONTROL                                                             03/31/2014 11:04:41 PAGE 14  
+C51 COMPILER V9.00   IOCONTROL                                                             09/20/2014 23:35:19 PAGE 14  
 
  788   3                                   fanzhan4=1;
  789   3                                       hold4=0;
@@ -894,7 +894,7 @@ stmt level    source
  847   1                      if(hold2)                                          //¹¤¼þ3ÔÚÁãÎ»±£³Ö£¬ËùÓÐ¶¯×÷Í£Ö¹
  848   1                  {   
  849   2                       hold_already2=1;
-C51 COMPILER V7.06   IOCONTROL                                                             03/31/2014 11:04:41 PAGE 15  
+C51 COMPILER V9.00   IOCONTROL                                                             09/20/2014 23:35:19 PAGE 15  
 
  850   2                               counter2++;
  851   2                               if(counter2==20)          //µç»ú3±£³ÖÊ±¼äÎª2.0s&&&
@@ -958,7 +958,7 @@ stmt level    source
  909   3                                }
  910   2               }
  911   1      
-C51 COMPILER V7.06   IOCONTROL                                                             03/31/2014 11:04:41 PAGE 16  
+C51 COMPILER V9.00   IOCONTROL                                                             09/20/2014 23:35:19 PAGE 16  
 
  912   1      
  913   1      } 

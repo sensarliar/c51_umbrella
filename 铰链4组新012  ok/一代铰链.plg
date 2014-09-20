@@ -1,9 +1,23 @@
 <html>
 <body>
 <pre>
-<h1>礦ision3 Build Log</h1>
+<h1>礦ision Build Log</h1>
 <h2>Project:</h2>
-F:\交接内容\铰链测试仪（四组新）\程序\铰链4组新012  ok\一代铰链.uv2
-Project File Date:  06/20/2013
+D:\gaoming\git\c51_umbrella\铰链4组新012  ok\一代铰链.uvproj
+Project File Date:  <unknown>
 
 <h2>Output:</h2>
+Build target 'Target 1'
+compiling main.c...
+compiling timer0.c...
+compiling lcdio.c...
+compiling IOcontrol.c...
+compiling timer1.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_LCD_CLEAR3?TIMER1
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_LCD_CLEAR4?TIMER1
+Program Size: data=95.0 xdata=0 code=5792
+creating hex file from "一代铰链"...
+"一代铰链" - 0 Error(s), 2 Warning(s).
