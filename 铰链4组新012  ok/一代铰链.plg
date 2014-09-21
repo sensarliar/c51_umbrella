@@ -4,7 +4,7 @@
 <h1>礦ision Build Log</h1>
 <h2>Project:</h2>
 D:\gaoming\git\c51_umbrella\铰链4组新012  ok\一代铰链.uvproj
-Project File Date:  <unknown>
+Project File Date:  09/21/2014
 
 <h2>Output:</h2>
 Build target 'Target 1'
@@ -18,6 +18,6 @@ linking...
     SEGMENT: ?PR?_LCD_CLEAR3?TIMER1
 *** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
     SEGMENT: ?PR?_LCD_CLEAR4?TIMER1
-Program Size: data=95.0 xdata=0 code=5792
+Program Size: data=95.0 xdata=0 code=5794
 creating hex file from "一代铰链"...
 "一代铰链" - 0 Error(s), 2 Warning(s).

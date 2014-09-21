@@ -1,4 +1,4 @@
-C51 COMPILER V9.00   TIMER1                                                                09/20/2014 23:35:19 PAGE 1   
+C51 COMPILER V9.00   TIMER1                                                                09/21/2014 09:41:15 PAGE 1   
 
 
 C51 COMPILER V9.00, COMPILATION OF MODULE TIMER1
@@ -62,7 +62,7 @@ line level    source
              -"B",0*/
   52          
   53          uchar code charT[ ]=  {0x00,0x00,0x00,0x00,0x00,0x00,0x3F,0x3F,0x01,0x01,0x01,0x01,0x01,0x01,0x01,0x01,
-C51 COMPILER V9.00   TIMER1                                                                09/20/2014 23:35:19 PAGE 2   
+C51 COMPILER V9.00   TIMER1                                                                09/21/2014 09:41:15 PAGE 2   
 
   54                                 0x01,0x01,0x01,0x01,0x01,0x01,0x01,0x01,0x01,0x01,0x01,0x00,0x00,0x00,0x00,0x00,
   55                                 0x00,0x00,0x00,0x00,0x00,0x00,0xFE,0xFE,0xC0,0xC0,0xC0,0xC0,0xC0,0xC0,0xC0,0xC0,
@@ -126,7 +126,7 @@ line level    source
              -32 , ËÎÌו )*/
  109          
  110          
-C51 COMPILER V9.00   TIMER1                                                                09/20/2014 23:35:19 PAGE 3   
+C51 COMPILER V9.00   TIMER1                                                                09/21/2014 09:41:15 PAGE 3   
 
  111          
  112          uchar code hz5[ ]=      {0x00,0x00,0x00,0x08,0x06,0x07,0x03,0x02,0x00,0x00,0x30,0x18,0x1C,0x0C,0x09,0x01,
@@ -190,7 +190,7 @@ line level    source
  165                                   0x00,0x00,0x00,0x00,0x00,0x00,0x70,0xF0,0xF0,0xF0,0xF0,0x70,0x70,0x70,0x70,0x70,
  166                                   0x70,0x70,0x70,0xFE,0xFE,0x70,0x70,0x70,0x70,0x70,0x70,0x00,0x00,0x00,0x00,0x00};
              -/*"4",0*/
-C51 COMPILER V9.00   TIMER1                                                                09/20/2014 23:35:19 PAGE 4   
+C51 COMPILER V9.00   TIMER1                                                                09/21/2014 09:41:15 PAGE 4   
 
  167          
  168          
@@ -254,7 +254,7 @@ line level    source
  226          
  227          void LCD_Init(void)
  228          {
-C51 COMPILER V9.00   TIMER1                                                                09/20/2014 23:35:19 PAGE 5   
+C51 COMPILER V9.00   TIMER1                                                                09/21/2014 09:41:15 PAGE 5   
 
  229   1      WriteCommand(0x40);
  230   1         WriteData(0x30);
@@ -318,7 +318,7 @@ line level    source
  288   2       for(j=0;j<240;j++)
  289   2       {WriteData(dat);}
  290   2        }
-C51 COMPILER V9.00   TIMER1                                                                09/20/2014 23:35:19 PAGE 6   
+C51 COMPILER V9.00   TIMER1                                                                09/21/2014 09:41:15 PAGE 6   
 
  291   1      }
  292          
@@ -382,7 +382,7 @@ line level    source
  350          void LCD_Write32x16Char(uchar addx, uchar addy, uchar code *DData)
  351          {
  352   1       unsigned int i,j;
-C51 COMPILER V9.00   TIMER1                                                                09/20/2014 23:35:19 PAGE 7   
+C51 COMPILER V9.00   TIMER1                                                                09/21/2014 09:41:15 PAGE 7   
 
  353   1       unsigned int tmp=0;
  354   1       unsigned int k=0;
@@ -446,7 +446,7 @@ line level    source
  412   1      
  413   1         LCD_Write32x16Char(115,6,charA); 
  414   1         LCD_Write32x16Char(135,6,charB);
-C51 COMPILER V9.00   TIMER1                                                                09/20/2014 23:35:19 PAGE 8   
+C51 COMPILER V9.00   TIMER1                                                                09/21/2014 09:41:15 PAGE 8   
 
  415   1      
  416   1      
@@ -510,7 +510,7 @@ line level    source
  474   1      
  475   1                      LCD_Write32x16Char1(186,30,numb,timer4b.sec/10);
  476   1              LCD_Write32x16Char1(188,30,numb,timer4b.sec%10);
-C51 COMPILER V9.00   TIMER1                                                                09/20/2014 23:35:19 PAGE 9   
+C51 COMPILER V9.00   TIMER1                                                                09/21/2014 09:41:15 PAGE 9   
 
  477   1              LCD_Write32x16Char1(190,30,numb,timer4b.hsec/10);
  478   1                      LCD_Write32x16Char1(192,30,numb,10);

@@ -143,7 +143,7 @@ void timer0() interrupt 1 using 1
 
 
 	dis_fresh=1;	 
-	if(lcd_dat==5)
+	if(lcd_dat>=5)
 	{lcd_dat=1;}       
 	  
 }
