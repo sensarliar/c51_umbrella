@@ -15,7 +15,7 @@
 
 #define uint unsigned int
 #define uchar unsigned char
-sbit    LED=P1^3;
+sbit    LED=P5^3;
 void WriteCommand(uchar Command);
 void WriteData(uchar DData);
 
@@ -83,59 +83,13 @@ sbit  dis_fresh=dis_flg^0;
 
 extern  uchar  lcd_dat;
 
-extern  bit  zero_already4;
-extern  bit  start_already4;
-extern 	bit  st_tm4a;
-extern 	bit  st_tm4b;
-extern  bit  hold4;
-
-extern  bit  zero_already3;
-extern  bit  start_already3;
-extern 	bit  st_tm3a;
-extern 	bit  st_tm3b;
-extern  bit  hold3;
-
-extern  bit  zero_already2;
-extern  bit  start_already2;
-extern 	bit  st_tm2a;
-extern 	bit  st_tm2b;
-extern  bit  hold2;
-
-extern  bit  zero_already1;
-extern  bit  start_already1;
-extern 	bit  st_tm1a;
-extern 	bit  st_tm1b;
-extern  bit  hold1;
-
-
-sbit zhengkong1=P1^0;			 
-sbit fankong1=P1^1;
-sbit dingdian1=P4^0;
-
-
-
-sbit zhengkong2=P2^3;			 
-sbit fankong2=P2^4;
-sbit dingdian2=P4^6;
-
-sbit zhengkong3=P1^4;			 
-sbit fankong3=P1^5;
-sbit dingdian3=P5^0;
-
-sbit zhengkong4=P3^0;			 
-sbit fankong4=P1^7;
-sbit dingdian4=P4^5;
-
-sbit zero1=P2^2;
-sbit zero2=P4^1;
-sbit zero3=P2^5;
-sbit zero4=P4^4;
-
 extern struct date
 {
 unsigned char hsec;
 unsigned char sec;
-}timer1a,timer1b,timer2a,timer2b,timer3a,timer3b,timer4a,timer4b;
+}xtimer1,timer2,timer3,timer4,timer5,timer6,timer7,timer8;
+
+
 
 
 void init_timer0();
@@ -149,6 +103,8 @@ void LCD_Init();
 void LCD_Clear(uchar dat);
 
 void LCD_Write32x16Char1(uchar addx, uchar addy, uchar code *DData, uchar m);
+
+void counter_init();
 
 void io_init()
 {
@@ -173,7 +129,7 @@ dis_all=1;
 
 }
 
-
+counter_init();
 
 io_init();											
 
@@ -191,67 +147,67 @@ while(1)
 		 dis_fresh=0;
 		 if(lcd_dat==1)
 		 {
-		 LCD_Write32x16Char1(240,11,numb,timer1a.sec%10);
-		 LCD_Write32x16Char1(2,12,numb,timer1b.sec%10);
-		 LCD_Write32x16Char1(48,18,numb,timer2a.sec%10);
-		 LCD_Write32x16Char1(66,18,numb,timer2b.sec%10);
+		 LCD_Write32x16Char1(240,11,numb,xtimer1.sec%10);
+		 LCD_Write32x16Char1(2,12,numb,timer2.sec%10);
+		 LCD_Write32x16Char1(48,18,numb,timer3.sec%10);
+		 LCD_Write32x16Char1(66,18,numb,timer4.sec%10);
 		 
-		 LCD_Write32x16Char1(112,24,numb,timer3a.sec%10);
-		 LCD_Write32x16Char1(130,24,numb,timer3b.sec%10);
-		 LCD_Write32x16Char1(176,30,numb,timer4a.sec%10);
-		 LCD_Write32x16Char1(194,30,numb,timer4b.sec%10);
+		 LCD_Write32x16Char1(112,24,numb,timer5.sec%10);
+		 LCD_Write32x16Char1(130,24,numb,timer6.sec%10);
+		 LCD_Write32x16Char1(176,30,numb,timer7.sec%10);
+		 LCD_Write32x16Char1(194,30,numb,timer8.sec%10);
 		 
-		 LCD_Write32x16Char1(236,11,numb,timer1a.sec/10);
-		 LCD_Write32x16Char1(254,11,numb,timer1b.sec/10);
+		 LCD_Write32x16Char1(236,11,numb,xtimer1.sec/10);
+		 LCD_Write32x16Char1(254,11,numb,timer2.sec/10);
 		 }
 
 		 if(lcd_dat==2)
 		 {
 
-		 LCD_Write32x16Char1(44,18,numb,timer2a.sec/10);
-		 LCD_Write32x16Char1(62,18,numb,timer2b.sec/10);
+		 LCD_Write32x16Char1(44,18,numb,timer3.sec/10);
+		 LCD_Write32x16Char1(62,18,numb,timer4.sec/10);
 
-		 LCD_Write32x16Char1(126,24,numb,timer3b.sec/10);
-		 LCD_Write32x16Char1(108,24,numb,timer3a.sec/10);
+		 LCD_Write32x16Char1(126,24,numb,timer5.sec/10);
+		 LCD_Write32x16Char1(108,24,numb,timer6.sec/10);
 
-		 LCD_Write32x16Char1(172,30,numb,timer4a.sec/10);
-		 LCD_Write32x16Char1(190,30,numb,timer4b.sec/10);
+		 LCD_Write32x16Char1(172,30,numb,timer7.sec/10);
+		 LCD_Write32x16Char1(190,30,numb,timer8.sec/10);
 
-		 LCD_Write32x16Char1(234,11,numb,timer1a.hsec%10);
-		 LCD_Write32x16Char1(252,11,numb,timer1b.hsec%10);
+		 LCD_Write32x16Char1(234,11,numb,xtimer1.hsec%10);
+		 LCD_Write32x16Char1(252,11,numb,timer2.hsec%10);
 
-		 LCD_Write32x16Char1(42,18,numb,timer2a.hsec%10);
-		 LCD_Write32x16Char1(60,18,numb,timer2b.hsec%10);
+		 LCD_Write32x16Char1(42,18,numb,timer3.hsec%10);
+		 LCD_Write32x16Char1(60,18,numb,timer4.hsec%10);
 
 		 }
 
 		 if(lcd_dat==3)
 		 {
 
-		 LCD_Write32x16Char1(106,24,numb,timer3a.hsec%10);
-		 LCD_Write32x16Char1(124,24,numb,timer3b.hsec%10);
+		 LCD_Write32x16Char1(106,24,numb,timer5.hsec%10);
+		 LCD_Write32x16Char1(124,24,numb,timer6.hsec%10);
 
 
-		 LCD_Write32x16Char1(170,30,numb,timer4a.hsec%10);
-		 LCD_Write32x16Char1(188,30,numb,timer4b.hsec%10);
+		 LCD_Write32x16Char1(170,30,numb,timer7.hsec%10);
+		 LCD_Write32x16Char1(188,30,numb,timer8.hsec%10);
 
 
-	     LCD_Write32x16Char1(232,11,numb,timer1a.hsec/10);
-		 LCD_Write32x16Char1(250,11,numb,timer1b.hsec/10);
+	     LCD_Write32x16Char1(232,11,numb,xtimer1.hsec/10);
+		 LCD_Write32x16Char1(250,11,numb,timer2.hsec/10);
 
-		 LCD_Write32x16Char1(40,18,numb,timer2a.hsec/10);
-		 LCD_Write32x16Char1(58,18,numb,timer2b.hsec/10);
+		 LCD_Write32x16Char1(40,18,numb,timer3.hsec/10);
+		 LCD_Write32x16Char1(58,18,numb,timer4.hsec/10);
 
-         LCD_Write32x16Char1(104,24,numb,timer3a.hsec/10);
-		 LCD_Write32x16Char1(122,24,numb,timer3b.hsec/10);
+         LCD_Write32x16Char1(104,24,numb,timer5.hsec/10);
+		 LCD_Write32x16Char1(122,24,numb,timer6.hsec/10);
 
 		 }
 
 		 if(lcd_dat==4)
 		 {
 
-		 LCD_Write32x16Char1(168,30,numb,timer4a.hsec/10);
-		 LCD_Write32x16Char1(186,30,numb,timer4b.hsec/10);
+		 LCD_Write32x16Char1(168,30,numb,timer7.hsec/10);
+		 LCD_Write32x16Char1(186,30,numb,timer8.hsec/10);
 
 
 		 LCD_Write32x16Char1(238,11,numb,10);

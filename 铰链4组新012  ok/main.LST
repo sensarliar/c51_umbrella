@@ -1,4 +1,4 @@
-C51 COMPILER V9.00   MAIN                                                                  09/21/2014 09:41:15 PAGE 1   
+C51 COMPILER V9.00   MAIN                                                                  09/21/2014 16:12:55 PAGE 1   
 
 
 C51 COMPILER V9.00, COMPILATION OF MODULE MAIN
@@ -24,7 +24,7 @@ line level    source
   15          
   16          #define uint unsigned int
   17          #define uchar unsigned char
-  18          sbit    LED=P1^3;
+  18          sbit    LED=P5^3;
   19          void WriteCommand(uchar Command);
   20          void WriteData(uchar DData);
   21          
@@ -62,7 +62,7 @@ line level    source
   48                                                           0x30,0x00,0x00,0x00,0x00,0x70,0x70,0x70,0x38,0x3C,0x1F,0x07,0x00,0x00,0x00,0x00,
   49                                                           0x00,0x00,0x00,0x00,0x00,0x00,0xF8,0xF8,0x00,0x00,0x00,0x00,0x00,0xE0,0xF0,0x78,
   50                                                           0x38,0x1C,0x1C,0x1C,0x1C,0x1C,0x1C,0x18,0x38,0x70,0xF0,0xC0,0x00,0x00,0x00,0x00,/*"5",0*//* (16 X 3
-C51 COMPILER V9.00   MAIN                                                                  09/21/2014 09:41:15 PAGE 2   
+C51 COMPILER V9.00   MAIN                                                                  09/21/2014 16:12:55 PAGE 2   
 
              -2 , 黑体 )*/
   51          
@@ -105,211 +105,167 @@ line level    source
   83          
   84          extern  uchar  lcd_dat;
   85          
-  86          extern  bit  zero_already4;
-  87          extern  bit  start_already4;
-  88          extern  bit  st_tm4a;
-  89          extern  bit  st_tm4b;
-  90          extern  bit  hold4;
+  86          extern struct date
+  87          {
+  88          unsigned char hsec;
+  89          unsigned char sec;
+  90          }xtimer1,timer2,timer3,timer4,timer5,timer6,timer7,timer8;
   91          
-  92          extern  bit  zero_already3;
-  93          extern  bit  start_already3;
-  94          extern  bit  st_tm3a;
-  95          extern  bit  st_tm3b;
-  96          extern  bit  hold3;
+  92          
+  93          
+  94          
+  95          void init_timer0();
+  96          void timer0();
   97          
-  98          extern  bit  zero_already2;
-  99          extern  bit  start_already2;
- 100          extern  bit  st_tm2a;
- 101          extern  bit  st_tm2b;
- 102          extern  bit  hold2;
- 103          
- 104          extern  bit  zero_already1;
- 105          extern  bit  start_already1;
- 106          extern  bit  st_tm1a;
-C51 COMPILER V9.00   MAIN                                                                  09/21/2014 09:41:15 PAGE 3   
+  98          
+  99          void init_timer1();
+ 100          void timer1();
+ 101          
+ 102          void LCD_Init();
+ 103          void LCD_Clear(uchar dat);
+ 104          
+ 105          void LCD_Write32x16Char1(uchar addx, uchar addy, uchar code *DData, uchar m);
+ 106          
+C51 COMPILER V9.00   MAIN                                                                  09/21/2014 16:12:55 PAGE 3   
 
- 107          extern  bit  st_tm1b;
- 108          extern  bit  hold1;
- 109          
- 110          
- 111          sbit zhengkong1=P1^0;                    
- 112          sbit fankong1=P1^1;
- 113          sbit dingdian1=P4^0;
+ 107          void counter_init();
+ 108          
+ 109          void io_init()
+ 110          {
+ 111   1          P4SW=0xff;  
+ 112   1      } 
+ 113          
  114          
- 115          
+ 115          uint ql;
  116          
- 117          sbit zhengkong2=P2^3;                    
- 118          sbit fankong2=P2^4;
- 119          sbit dingdian2=P4^6;
- 120          
- 121          sbit zhengkong3=P1^4;                    
- 122          sbit fankong3=P1^5;
- 123          sbit dingdian3=P5^0;
- 124          
- 125          sbit zhengkong4=P3^0;                    
- 126          sbit fankong4=P1^7;
- 127          sbit dingdian4=P4^5;
- 128          
- 129          sbit zero1=P2^2;
- 130          sbit zero2=P4^1;
- 131          sbit zero3=P2^5;
- 132          sbit zero4=P4^4;
- 133          
- 134          extern struct date
- 135          {
- 136          unsigned char hsec;
- 137          unsigned char sec;
- 138          }timer1a,timer1b,timer2a,timer2b,timer3a,timer3b,timer4a,timer4b;
- 139          
- 140          
- 141          void init_timer0();
- 142          void timer0();
- 143          
- 144          
- 145          void init_timer1();
- 146          void timer1();
- 147          
- 148          void LCD_Init();
- 149          void LCD_Clear(uchar dat);
- 150          
- 151          void LCD_Write32x16Char1(uchar addx, uchar addy, uchar code *DData, uchar m);
- 152          
- 153          void io_init()
- 154          {
- 155   1          P4SW=0xff;  
- 156   1      } 
- 157          
- 158          
- 159          uint ql;
- 160          
- 161          
- 162          /* 主程序 */
- 163          main()
- 164          { 
- 165   1      
- 166   1      CLK_DIV=0X00;     //外部石英晶体时钟，不分频.
- 167   1      ql=(PCON&0X10);   //上电初始化判定位
- 168   1      if(ql==0X10)      //如果为上电复位，显示初始化并清屏
-C51 COMPILER V9.00   MAIN                                                                  09/21/2014 09:41:15 PAGE 4   
+ 117          
+ 118          /* 主程序 */
+ 119          main()
+ 120          { 
+ 121   1      
+ 122   1      CLK_DIV=0X00;     //外部石英晶体时钟，不分频.
+ 123   1      ql=(PCON&0X10);   //上电初始化判定位
+ 124   1      if(ql==0X10)      //如果为上电复位，显示初始化并清屏
+ 125   1      {
+ 126   2      PCON=0X20;        //(PCON&&0XEF);
+ 127   2      LCD_Init();
+ 128   2      dis_all=1;
+ 129   2      
+ 130   2      }
+ 131   1      
+ 132   1      counter_init();
+ 133   1      
+ 134   1      io_init();                                                                                      
+ 135   1      
+ 136   1      IP|=0X80;
+ 137   1      dis_fresh=0;
+ 138   1      init_timer0();      //定时器0初始化，按键扫描，计时，动作时间控制
+ 139   1      init_timer1();      //显示控制
+ 140   1      
+ 141   1      
+ 142   1      while(1)
+ 143   1          {
+ 144   2                      if(dis_fresh==1)
+ 145   2                      {
+ 146   3                       
+ 147   3                       dis_fresh=0;
+ 148   3                       if(lcd_dat==1)
+ 149   3                       {
+ 150   4                       LCD_Write32x16Char1(240,11,numb,xtimer1.sec%10);
+ 151   4                       LCD_Write32x16Char1(2,12,numb,timer2.sec%10);
+ 152   4                       LCD_Write32x16Char1(48,18,numb,timer3.sec%10);
+ 153   4                       LCD_Write32x16Char1(66,18,numb,timer4.sec%10);
+ 154   4                       
+ 155   4                       LCD_Write32x16Char1(112,24,numb,timer5.sec%10);
+ 156   4                       LCD_Write32x16Char1(130,24,numb,timer6.sec%10);
+ 157   4                       LCD_Write32x16Char1(176,30,numb,timer7.sec%10);
+ 158   4                       LCD_Write32x16Char1(194,30,numb,timer8.sec%10);
+ 159   4                       
+ 160   4                       LCD_Write32x16Char1(236,11,numb,xtimer1.sec/10);
+ 161   4                       LCD_Write32x16Char1(254,11,numb,timer2.sec/10);
+ 162   4                       }
+ 163   3      
+ 164   3                       if(lcd_dat==2)
+ 165   3                       {
+ 166   4      
+ 167   4                       LCD_Write32x16Char1(44,18,numb,timer3.sec/10);
+ 168   4                       LCD_Write32x16Char1(62,18,numb,timer4.sec/10);
+C51 COMPILER V9.00   MAIN                                                                  09/21/2014 16:12:55 PAGE 4   
 
- 169   1      {
- 170   2      PCON=0X20;        //(PCON&&0XEF);
- 171   2      LCD_Init();
- 172   2      dis_all=1;
- 173   2      
- 174   2      }
- 175   1      
- 176   1      
- 177   1      
- 178   1      io_init();                                                                                      
- 179   1      
- 180   1      IP|=0X80;
- 181   1      dis_fresh=0;
- 182   1      init_timer0();      //定时器0初始化，按键扫描，计时，动作时间控制
- 183   1      init_timer1();      //显示控制
- 184   1      
- 185   1      
- 186   1      while(1)
- 187   1          {
- 188   2                      if(dis_fresh==1)
- 189   2                      {
- 190   3                       
- 191   3                       dis_fresh=0;
- 192   3                       if(lcd_dat==1)
- 193   3                       {
- 194   4                       LCD_Write32x16Char1(240,11,numb,timer1a.sec%10);
- 195   4                       LCD_Write32x16Char1(2,12,numb,timer1b.sec%10);
- 196   4                       LCD_Write32x16Char1(48,18,numb,timer2a.sec%10);
- 197   4                       LCD_Write32x16Char1(66,18,numb,timer2b.sec%10);
- 198   4                       
- 199   4                       LCD_Write32x16Char1(112,24,numb,timer3a.sec%10);
- 200   4                       LCD_Write32x16Char1(130,24,numb,timer3b.sec%10);
- 201   4                       LCD_Write32x16Char1(176,30,numb,timer4a.sec%10);
- 202   4                       LCD_Write32x16Char1(194,30,numb,timer4b.sec%10);
- 203   4                       
- 204   4                       LCD_Write32x16Char1(236,11,numb,timer1a.sec/10);
- 205   4                       LCD_Write32x16Char1(254,11,numb,timer1b.sec/10);
- 206   4                       }
- 207   3      
- 208   3                       if(lcd_dat==2)
- 209   3                       {
- 210   4      
- 211   4                       LCD_Write32x16Char1(44,18,numb,timer2a.sec/10);
- 212   4                       LCD_Write32x16Char1(62,18,numb,timer2b.sec/10);
- 213   4      
- 214   4                       LCD_Write32x16Char1(126,24,numb,timer3b.sec/10);
- 215   4                       LCD_Write32x16Char1(108,24,numb,timer3a.sec/10);
- 216   4      
- 217   4                       LCD_Write32x16Char1(172,30,numb,timer4a.sec/10);
- 218   4                       LCD_Write32x16Char1(190,30,numb,timer4b.sec/10);
- 219   4      
- 220   4                       LCD_Write32x16Char1(234,11,numb,timer1a.hsec%10);
- 221   4                       LCD_Write32x16Char1(252,11,numb,timer1b.hsec%10);
+ 169   4      
+ 170   4                       LCD_Write32x16Char1(126,24,numb,timer5.sec/10);
+ 171   4                       LCD_Write32x16Char1(108,24,numb,timer6.sec/10);
+ 172   4      
+ 173   4                       LCD_Write32x16Char1(172,30,numb,timer7.sec/10);
+ 174   4                       LCD_Write32x16Char1(190,30,numb,timer8.sec/10);
+ 175   4      
+ 176   4                       LCD_Write32x16Char1(234,11,numb,xtimer1.hsec%10);
+ 177   4                       LCD_Write32x16Char1(252,11,numb,timer2.hsec%10);
+ 178   4      
+ 179   4                       LCD_Write32x16Char1(42,18,numb,timer3.hsec%10);
+ 180   4                       LCD_Write32x16Char1(60,18,numb,timer4.hsec%10);
+ 181   4      
+ 182   4                       }
+ 183   3      
+ 184   3                       if(lcd_dat==3)
+ 185   3                       {
+ 186   4      
+ 187   4                       LCD_Write32x16Char1(106,24,numb,timer5.hsec%10);
+ 188   4                       LCD_Write32x16Char1(124,24,numb,timer6.hsec%10);
+ 189   4      
+ 190   4      
+ 191   4                       LCD_Write32x16Char1(170,30,numb,timer7.hsec%10);
+ 192   4                       LCD_Write32x16Char1(188,30,numb,timer8.hsec%10);
+ 193   4      
+ 194   4      
+ 195   4                   LCD_Write32x16Char1(232,11,numb,xtimer1.hsec/10);
+ 196   4                       LCD_Write32x16Char1(250,11,numb,timer2.hsec/10);
+ 197   4      
+ 198   4                       LCD_Write32x16Char1(40,18,numb,timer3.hsec/10);
+ 199   4                       LCD_Write32x16Char1(58,18,numb,timer4.hsec/10);
+ 200   4      
+ 201   4               LCD_Write32x16Char1(104,24,numb,timer5.hsec/10);
+ 202   4                       LCD_Write32x16Char1(122,24,numb,timer6.hsec/10);
+ 203   4      
+ 204   4                       }
+ 205   3      
+ 206   3                       if(lcd_dat==4)
+ 207   3                       {
+ 208   4      
+ 209   4                       LCD_Write32x16Char1(168,30,numb,timer7.hsec/10);
+ 210   4                       LCD_Write32x16Char1(186,30,numb,timer8.hsec/10);
+ 211   4      
+ 212   4      
+ 213   4                       LCD_Write32x16Char1(238,11,numb,10);
+ 214   4                       LCD_Write32x16Char1(0,12,numb,10);
+ 215   4                       LCD_Write32x16Char1(46,18,numb,10);       
+ 216   4                       LCD_Write32x16Char1(64,18,numb,10);
+ 217   4                       LCD_Write32x16Char1(110,24,numb,10);       
+ 218   4                       LCD_Write32x16Char1(128,24,numb,10);
+ 219   4                       LCD_Write32x16Char1(174,30,numb,10);           
+ 220   4                       LCD_Write32x16Char1(192,30,numb,10);
+ 221   4              
  222   4      
- 223   4                       LCD_Write32x16Char1(42,18,numb,timer2a.hsec%10);
- 224   4                       LCD_Write32x16Char1(60,18,numb,timer2b.hsec%10);
- 225   4      
- 226   4                       }
- 227   3      
- 228   3                       if(lcd_dat==3)
- 229   3                       {
- 230   4      
-C51 COMPILER V9.00   MAIN                                                                  09/21/2014 09:41:15 PAGE 5   
+ 223   4      
+ 224   4              WriteCommand(0x46);
+ 225   4              WriteData(0x10);
+ 226   4              WriteData(0x26);
+ 227   4      
+ 228   4         }
+ 229   3         
+ 230   3      
+C51 COMPILER V9.00   MAIN                                                                  09/21/2014 16:12:55 PAGE 5   
 
- 231   4                       LCD_Write32x16Char1(106,24,numb,timer3a.hsec%10);
- 232   4                       LCD_Write32x16Char1(124,24,numb,timer3b.hsec%10);
- 233   4      
- 234   4      
- 235   4                       LCD_Write32x16Char1(170,30,numb,timer4a.hsec%10);
- 236   4                       LCD_Write32x16Char1(188,30,numb,timer4b.hsec%10);
- 237   4      
- 238   4      
- 239   4                   LCD_Write32x16Char1(232,11,numb,timer1a.hsec/10);
- 240   4                       LCD_Write32x16Char1(250,11,numb,timer1b.hsec/10);
- 241   4      
- 242   4                       LCD_Write32x16Char1(40,18,numb,timer2a.hsec/10);
- 243   4                       LCD_Write32x16Char1(58,18,numb,timer2b.hsec/10);
- 244   4      
- 245   4               LCD_Write32x16Char1(104,24,numb,timer3a.hsec/10);
- 246   4                       LCD_Write32x16Char1(122,24,numb,timer3b.hsec/10);
- 247   4      
- 248   4                       }
- 249   3      
- 250   3                       if(lcd_dat==4)
- 251   3                       {
- 252   4      
- 253   4                       LCD_Write32x16Char1(168,30,numb,timer4a.hsec/10);
- 254   4                       LCD_Write32x16Char1(186,30,numb,timer4b.hsec/10);
- 255   4      
- 256   4      
- 257   4                       LCD_Write32x16Char1(238,11,numb,10);
- 258   4                       LCD_Write32x16Char1(0,12,numb,10);
- 259   4                       LCD_Write32x16Char1(46,18,numb,10);       
- 260   4                       LCD_Write32x16Char1(64,18,numb,10);
- 261   4                       LCD_Write32x16Char1(110,24,numb,10);       
- 262   4                       LCD_Write32x16Char1(128,24,numb,10);
- 263   4                       LCD_Write32x16Char1(174,30,numb,10);           
- 264   4                       LCD_Write32x16Char1(192,30,numb,10);
- 265   4              
- 266   4      
- 267   4      
- 268   4              WriteCommand(0x46);
- 269   4              WriteData(0x10);
- 270   4              WriteData(0x26);
- 271   4      
- 272   4         }
- 273   3         
- 274   3      
- 275   3         }
- 276   2         
- 277   2                                          
- 278   2          }
- 279   1      }
- 280          
+ 231   3         }
+ 232   2         
+ 233   2                                          
+ 234   2          }
+ 235   1      }
+ 236          
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =    839    ----
+   CODE SIZE        =    842    ----
    CONSTANT SIZE    =    704    ----
    XDATA SIZE       =   ----    ----
    PDATA SIZE       =   ----    ----

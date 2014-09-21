@@ -30,11 +30,7 @@ sbit    LED=P1^3;
 
 extern 	bit  dis_all;
 extern  bit  dis_fresh;
-extern struct date
-{
-unsigned char sec;
-unsigned char hsec;
-}timer1a,timer1b,timer2a,timer2b,timer3a,timer3b,timer4a,timer4b;
+
 uint clrdat;
 
 
@@ -290,36 +286,9 @@ void LCD_Clear(uchar dat)
   }
 }
 
-void LCD_Clear3(uchar dat)
-{
- unsigned int i;
- unsigned int j;
- for(i=0;i<40;i++)
- {
- WriteCommand(0x46);
-   WriteData(i);
-   WriteData(0x1b);
- WriteCommand(0x42);
- for(j=0;j<50;j++)
- {WriteData(dat);}
-  }
-}
 
 
-void LCD_Clear4(uchar dat)
-{
- unsigned int i;
- unsigned int j;
- for(i=4;i<40;i++)
- {
- WriteCommand(0x46);
-   WriteData(i);
-   WriteData(0x0f);
- WriteCommand(0x42);
- for(j=0;j<50;j++)
- {WriteData(dat);}
-  }
-}
+
 
 
 
