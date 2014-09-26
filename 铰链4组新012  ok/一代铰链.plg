@@ -3,7 +3,7 @@
 <pre>
 <h1>礦ision Build Log</h1>
 <h2>Project:</h2>
-D:\gaoming\git\c51_umbrella\铰链4组新012  ok\一代铰链.uvproj
+D:\Keil\c51_umbrella\铰链4组新012  ok\一代铰链.uvproj
 Project File Date:  09/21/2014
 
 <h2>Output:</h2>
@@ -14,65 +14,9 @@ compiling lcdio.c...
 compiling IOcontrol.c...
 compiling timer1.c...
 linking...
-*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
-    SYMBOL:  OUTPUT1
-    MODULE:  timer0.obj (TIMER0)
-*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
-    SYMBOL:  OUTPUT2
-    MODULE:  timer0.obj (TIMER0)
-*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
-    SYMBOL:  OUTPUT3
-    MODULE:  timer0.obj (TIMER0)
-*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
-    SYMBOL:  OUTPUT4
-    MODULE:  timer0.obj (TIMER0)
-*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
-    SYMBOL:  OUTPUT5
-    MODULE:  timer0.obj (TIMER0)
-*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
-    SYMBOL:  OUTPUT6
-    MODULE:  timer0.obj (TIMER0)
-*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
-    SYMBOL:  OUTPUT7
-    MODULE:  timer0.obj (TIMER0)
-*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
-    SYMBOL:  OUTPUT8
-    MODULE:  timer0.obj (TIMER0)
-*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
-    SYMBOL:  OUTPUT1
-    MODULE:  timer0.obj (TIMER0)
-    ADDRESS: 0C7FH
-*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
-    SYMBOL:  OUTPUT2
-    MODULE:  timer0.obj (TIMER0)
-    ADDRESS: 0C92H
-*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
-    SYMBOL:  OUTPUT3
-    MODULE:  timer0.obj (TIMER0)
-    ADDRESS: 0CA5H
-*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
-    SYMBOL:  OUTPUT4
-    MODULE:  timer0.obj (TIMER0)
-    ADDRESS: 0CB8H
-*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
-    SYMBOL:  OUTPUT5
-    MODULE:  timer0.obj (TIMER0)
-    ADDRESS: 0CCBH
-*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
-    SYMBOL:  OUTPUT6
-    MODULE:  timer0.obj (TIMER0)
-    ADDRESS: 0CDEH
-*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
-    SYMBOL:  OUTPUT7
-    MODULE:  timer0.obj (TIMER0)
-    ADDRESS: 0CF1H
-*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
-    SYMBOL:  OUTPUT8
-    MODULE:  timer0.obj (TIMER0)
-    ADDRESS: 0D04H
 Program Size: data=85.0 xdata=0 code=4729
 creating hex file from "一代铰链"...
-"一代铰链" - 0 Error(s), 16 Warning(s).
+"一代铰链" - 0 Error(s), 0 Warning(s).
 Build target 'Target 1'
 compiling main.c...
 compiling timer0.c...
@@ -80,207 +24,9 @@ compiling lcdio.c...
 compiling IOcontrol.c...
 compiling timer1.c...
 linking...
-*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
-    SYMBOL:  XOUTPUT1
-    MODULE:  timer0.obj (TIMER0)
-*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
-    SYMBOL:  XOUTPUT2
-    MODULE:  timer0.obj (TIMER0)
-*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
-    SYMBOL:  XOUTPUT3
-    MODULE:  timer0.obj (TIMER0)
-*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
-    SYMBOL:  XOUTPUT4
-    MODULE:  timer0.obj (TIMER0)
-*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
-    SYMBOL:  XOUTPUT5
-    MODULE:  timer0.obj (TIMER0)
-*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
-    SYMBOL:  XOUTPUT6
-    MODULE:  timer0.obj (TIMER0)
-*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
-    SYMBOL:  XOUTPUT7
-    MODULE:  timer0.obj (TIMER0)
-*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
-    SYMBOL:  XOUTPUT8
-    MODULE:  timer0.obj (TIMER0)
-*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
-    SYMBOL:  XOUTPUT1
-    MODULE:  timer0.obj (TIMER0)
-    ADDRESS: 0C7FH
-*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
-    SYMBOL:  XOUTPUT2
-    MODULE:  timer0.obj (TIMER0)
-    ADDRESS: 0C92H
-*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
-    SYMBOL:  XOUTPUT3
-    MODULE:  timer0.obj (TIMER0)
-    ADDRESS: 0CA5H
-*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
-    SYMBOL:  XOUTPUT4
-    MODULE:  timer0.obj (TIMER0)
-    ADDRESS: 0CB8H
-*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
-    SYMBOL:  XOUTPUT5
-    MODULE:  timer0.obj (TIMER0)
-    ADDRESS: 0CCBH
-*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
-    SYMBOL:  XOUTPUT6
-    MODULE:  timer0.obj (TIMER0)
-    ADDRESS: 0CDEH
-*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
-    SYMBOL:  XOUTPUT7
-    MODULE:  timer0.obj (TIMER0)
-    ADDRESS: 0CF1H
-*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
-    SYMBOL:  XOUTPUT8
-    MODULE:  timer0.obj (TIMER0)
-    ADDRESS: 0D04H
 Program Size: data=85.0 xdata=0 code=4729
 creating hex file from "一代铰链"...
-"一代铰链" - 0 Error(s), 16 Warning(s).
-Build target 'Target 1'
-compiling main.c...
-compiling timer0.c...
-compiling lcdio.c...
-compiling IOcontrol.c...
-IOCONTROL.C(25): error C247: non-address/-constant initializer
-IOCONTROL.C(26): error C247: non-address/-constant initializer
-IOCONTROL.C(27): error C247: non-address/-constant initializer
-compiling timer1.c...
-Target not created
-Build target 'Target 1'
-compiling main.c...
-compiling timer0.c...
-compiling lcdio.c...
-compiling IOcontrol.c...
-compiling timer1.c...
-linking...
-*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
-    SYMBOL:  XOUTPUT1
-    MODULE:  timer0.obj (TIMER0)
-*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
-    SYMBOL:  XOUTPUT2
-    MODULE:  timer0.obj (TIMER0)
-*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
-    SYMBOL:  XOUTPUT3
-    MODULE:  timer0.obj (TIMER0)
-*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
-    SYMBOL:  XOUTPUT4
-    MODULE:  timer0.obj (TIMER0)
-*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
-    SYMBOL:  XOUTPUT5
-    MODULE:  timer0.obj (TIMER0)
-*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
-    SYMBOL:  XOUTPUT6
-    MODULE:  timer0.obj (TIMER0)
-*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
-    SYMBOL:  XOUTPUT7
-    MODULE:  timer0.obj (TIMER0)
-*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
-    SYMBOL:  XOUTPUT8
-    MODULE:  timer0.obj (TIMER0)
-*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
-    SYMBOL:  XOUTPUT1
-    MODULE:  timer0.obj (TIMER0)
-    ADDRESS: 0C7FH
-*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
-    SYMBOL:  XOUTPUT2
-    MODULE:  timer0.obj (TIMER0)
-    ADDRESS: 0C92H
-*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
-    SYMBOL:  XOUTPUT3
-    MODULE:  timer0.obj (TIMER0)
-    ADDRESS: 0CA5H
-*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
-    SYMBOL:  XOUTPUT4
-    MODULE:  timer0.obj (TIMER0)
-    ADDRESS: 0CB8H
-*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
-    SYMBOL:  XOUTPUT5
-    MODULE:  timer0.obj (TIMER0)
-    ADDRESS: 0CCBH
-*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
-    SYMBOL:  XOUTPUT6
-    MODULE:  timer0.obj (TIMER0)
-    ADDRESS: 0CDEH
-*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
-    SYMBOL:  XOUTPUT7
-    MODULE:  timer0.obj (TIMER0)
-    ADDRESS: 0CF1H
-*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
-    SYMBOL:  XOUTPUT8
-    MODULE:  timer0.obj (TIMER0)
-    ADDRESS: 0D04H
-Program Size: data=85.0 xdata=0 code=4729
-creating hex file from "一代铰链"...
-"一代铰链" - 0 Error(s), 16 Warning(s).
-Build target 'Target 1'
-compiling main.c...
-compiling timer0.c...
-compiling lcdio.c...
-compiling IOcontrol.c...
-compiling timer1.c...
-linking...
-*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
-    SYMBOL:  XOUTPUT1
-    MODULE:  timer0.obj (TIMER0)
-*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
-    SYMBOL:  XOUTPUT2
-    MODULE:  timer0.obj (TIMER0)
-*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
-    SYMBOL:  XOUTPUT3
-    MODULE:  timer0.obj (TIMER0)
-*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
-    SYMBOL:  XOUTPUT4
-    MODULE:  timer0.obj (TIMER0)
-*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
-    SYMBOL:  XOUTPUT5
-    MODULE:  timer0.obj (TIMER0)
-*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
-    SYMBOL:  XOUTPUT6
-    MODULE:  timer0.obj (TIMER0)
-*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
-    SYMBOL:  XOUTPUT7
-    MODULE:  timer0.obj (TIMER0)
-*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
-    SYMBOL:  XOUTPUT8
-    MODULE:  timer0.obj (TIMER0)
-*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
-    SYMBOL:  XOUTPUT1
-    MODULE:  timer0.obj (TIMER0)
-    ADDRESS: 0C7FH
-*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
-    SYMBOL:  XOUTPUT2
-    MODULE:  timer0.obj (TIMER0)
-    ADDRESS: 0C92H
-*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
-    SYMBOL:  XOUTPUT3
-    MODULE:  timer0.obj (TIMER0)
-    ADDRESS: 0CA5H
-*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
-    SYMBOL:  XOUTPUT4
-    MODULE:  timer0.obj (TIMER0)
-    ADDRESS: 0CB8H
-*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
-    SYMBOL:  XOUTPUT5
-    MODULE:  timer0.obj (TIMER0)
-    ADDRESS: 0CCBH
-*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
-    SYMBOL:  XOUTPUT6
-    MODULE:  timer0.obj (TIMER0)
-    ADDRESS: 0CDEH
-*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
-    SYMBOL:  XOUTPUT7
-    MODULE:  timer0.obj (TIMER0)
-    ADDRESS: 0CF1H
-*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
-    SYMBOL:  XOUTPUT8
-    MODULE:  timer0.obj (TIMER0)
-    ADDRESS: 0D04H
-Program Size: data=85.0 xdata=0 code=4729
-creating hex file from "一代铰链"...
-"一代铰链" - 0 Error(s), 16 Warning(s).
+"一代铰链" - 0 Error(s), 0 Warning(s).
 Build target 'Target 1'
 compiling main.c...
 compiling timer0.c...
@@ -306,9 +52,12 @@ compiling main.c...
 compiling timer0.c...
 compiling lcdio.c...
 compiling IOcontrol.c...
-IOCONTROL.C(19): error C231: 'stop_key2': redefinition
 compiling timer1.c...
-Target not created
+TIMER1.C(471): warning C206: 'counter_init': missing function-prototype
+linking...
+Program Size: data=85.0 xdata=0 code=4738
+creating hex file from "一代铰链"...
+"一代铰链" - 0 Error(s), 1 Warning(s).
 Build target 'Target 1'
 compiling main.c...
 compiling timer0.c...
@@ -316,7 +65,7 @@ compiling lcdio.c...
 compiling IOcontrol.c...
 compiling timer1.c...
 linking...
-Program Size: data=85.0 xdata=0 code=4729
+Program Size: data=85.0 xdata=0 code=4738
 creating hex file from "一代铰链"...
 "一代铰链" - 0 Error(s), 0 Warning(s).
 Build target 'Target 1'
@@ -326,6 +75,88 @@ compiling lcdio.c...
 compiling IOcontrol.c...
 compiling timer1.c...
 linking...
-Program Size: data=85.0 xdata=0 code=4729
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  DIS_ALL
+    MODULE:  timer1.obj (TIMER1)
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  DIS_ALL
+    MODULE:  timer1.obj (TIMER1)
+    ADDRESS: 11C9H
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  DIS_ALL
+    MODULE:  timer1.obj (TIMER1)
+    ADDRESS: 11E6H
+Program Size: data=85.0 xdata=0 code=4735
+creating hex file from "一代铰链"...
+"一代铰链" - 0 Error(s), 3 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+compiling timer0.c...
+compiling lcdio.c...
+compiling IOcontrol.c...
+compiling timer1.c...
+linking...
+Program Size: data=85.0 xdata=0 code=4735
+creating hex file from "一代铰链"...
+"一代铰链" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+compiling timer0.c...
+compiling lcdio.c...
+compiling IOcontrol.c...
+compiling timer1.c...
+linking...
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  DIS_ALL
+    MODULE:  timer1.obj (TIMER1)
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  DIS_ALL
+    MODULE:  timer1.obj (TIMER1)
+    ADDRESS: 11CBH
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  DIS_ALL
+    MODULE:  timer1.obj (TIMER1)
+    ADDRESS: 11E8H
+Program Size: data=85.0 xdata=0 code=4737
+creating hex file from "一代铰链"...
+"一代铰链" - 0 Error(s), 3 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+compiling timer0.c...
+compiling lcdio.c...
+compiling IOcontrol.c...
+compiling timer1.c...
+linking...
+Program Size: data=85.0 xdata=0 code=4737
+creating hex file from "一代铰链"...
+"一代铰链" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+compiling timer0.c...
+compiling lcdio.c...
+compiling IOcontrol.c...
+compiling timer1.c...
+linking...
+Program Size: data=85.0 xdata=0 code=4742
+creating hex file from "一代铰链"...
+"一代铰链" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+compiling timer0.c...
+compiling lcdio.c...
+compiling IOcontrol.c...
+compiling timer1.c...
+linking...
+Program Size: data=85.0 xdata=0 code=4742
+creating hex file from "一代铰链"...
+"一代铰链" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+compiling main.c...
+compiling timer0.c...
+compiling lcdio.c...
+compiling IOcontrol.c...
+compiling timer1.c...
+linking...
+Program Size: data=85.0 xdata=0 code=4742
 creating hex file from "一代铰链"...
 "一代铰链" - 0 Error(s), 0 Warning(s).

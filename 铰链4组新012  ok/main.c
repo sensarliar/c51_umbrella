@@ -79,6 +79,7 @@ uchar code numb[ ]=		{0x00,0x00,0x00,0x00,0x00,0x00,0x07,0x0F,0x1C,0x38,0x38,0x3
 unsigned  char bdata temp_flg,dis_flg;
 
 sbit  dis_all=temp_flg^6;
+//sbit dis_all=P5^0;
 sbit  dis_fresh=dis_flg^0;
 
 extern  uchar  lcd_dat;
@@ -120,6 +121,8 @@ main()
 { 
 
 CLK_DIV=0X00;	  //外部石英晶体时钟，不分频.
+dis_all=0;
+
 ql=(PCON&0X10);   //上电初始化判定位
 if(ql==0X10)      //如果为上电复位，显示初始化并清屏
 {
@@ -133,7 +136,8 @@ counter_init();
 
 io_init();											
 
-IP|=0X80;
+//IP|=0X80;
+IP|=0X08;
 dis_fresh=0;
 init_timer0();	    //定时器0初始化，按键扫描，计时，动作时间控制
 init_timer1();	    //显示控制
@@ -167,8 +171,11 @@ while(1)
 		 LCD_Write32x16Char1(44,18,numb,timer3.sec/10);
 		 LCD_Write32x16Char1(62,18,numb,timer4.sec/10);
 
-		 LCD_Write32x16Char1(126,24,numb,timer5.sec/10);
-		 LCD_Write32x16Char1(108,24,numb,timer6.sec/10);
+//		 LCD_Write32x16Char1(126,24,numb,timer5.sec/10);
+//		 LCD_Write32x16Char1(108,24,numb,timer6.sec/10);
+
+		 LCD_Write32x16Char1(126,24,numb,timer6.sec/10);
+		 LCD_Write32x16Char1(108,24,numb,timer5.sec/10);
 
 		 LCD_Write32x16Char1(172,30,numb,timer7.sec/10);
 		 LCD_Write32x16Char1(190,30,numb,timer8.sec/10);

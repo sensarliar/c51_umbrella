@@ -12,7 +12,7 @@
 #define ulong unsigned long
 
 
-
+void counter_init(void);
 void sendbyte(uchar a);
 void init_timer0();
 
@@ -26,9 +26,11 @@ sbit lcd_a0=P3^6;
 //sbit lcd_cs=P3^5;
 //sbit lcd_a0=P3^6;
   
-sbit    LED=P1^3;
+//sbit    LED=P1^3;
 
 extern 	bit  dis_all;
+//sbit dis_all=P5^0;
+sbit xreset_pin = P5^0;
 extern  bit  dis_fresh;
 
 uint clrdat;
@@ -462,10 +464,21 @@ void timer1() interrupt 3 using 2
    TH1=0x15;				//如果时间要完全精确，需用12MHZ的晶振
    TL1=0xA0;
 /*******************如果全显示标志为1，所有显示刷新并清屏***********/
+	if(!xreset_pin){
+	dis_all = 1;
+	}
+
    if(dis_all)
    {
-   TR1=0;
-   ET1=0;
+//   TR1=0;
+//   ET1=0;
+   TR0=0;
+
+counter_init();
+dis_fresh=0;
+init_timer0();	    //定时器0初始化，按键扫描，计时，动作时间控制
+	
+
    LCD_Clear(0x00);
    LCD_Clear(0x00);
    LCD_Char_display();

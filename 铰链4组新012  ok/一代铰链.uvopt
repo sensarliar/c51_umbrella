@@ -191,10 +191,10 @@
       <FileType>1</FileType>
       <tvExp>1</tvExp>
       <Focus>0</Focus>
-      <ColumnNumber>16</ColumnNumber>
+      <ColumnNumber>0</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>133</TopLine>
-      <CurrentLine>133</CurrentLine>
+      <TopLine>67</TopLine>
+      <CurrentLine>81</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\main.c</PathWithFileName>
       <FilenameWithoutPath>main.c</FilenameWithoutPath>
@@ -224,10 +224,10 @@
       <FileType>1</FileType>
       <tvExp>1</tvExp>
       <Focus>0</Focus>
-      <ColumnNumber>32</ColumnNumber>
+      <ColumnNumber>50</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>215</TopLine>
-      <CurrentLine>215</CurrentLine>
+      <TopLine>19</TopLine>
+      <CurrentLine>19</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\timer0.c</PathWithFileName>
       <FilenameWithoutPath>timer0.c</FilenameWithoutPath>
@@ -260,7 +260,7 @@
       <ColumnNumber>59</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
       <TopLine>7</TopLine>
-      <CurrentLine>14</CurrentLine>
+      <CurrentLine>8</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\lcdio.c</PathWithFileName>
       <FilenameWithoutPath>lcdio.c</FilenameWithoutPath>
@@ -290,10 +290,10 @@
       <FileType>1</FileType>
       <tvExp>1</tvExp>
       <Focus>0</Focus>
-      <ColumnNumber>34</ColumnNumber>
+      <ColumnNumber>14</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>181</TopLine>
-      <CurrentLine>181</CurrentLine>
+      <TopLine>184</TopLine>
+      <CurrentLine>184</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\IOcontrol.c</PathWithFileName>
       <FilenameWithoutPath>IOcontrol.c</FilenameWithoutPath>
@@ -304,10 +304,10 @@
       <FileType>1</FileType>
       <tvExp>1</tvExp>
       <Focus>0</Focus>
-      <ColumnNumber>25</ColumnNumber>
+      <ColumnNumber>22</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>459</TopLine>
-      <CurrentLine>474</CurrentLine>
+      <TopLine>465</TopLine>
+      <CurrentLine>485</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\timer1.c</PathWithFileName>
       <FilenameWithoutPath>timer1.c</FilenameWithoutPath>
@@ -334,7 +334,7 @@
   </Group>
 
   <AlienFiles>
-    <PathWithFilename>D:\gaoming\git\c51_umbrella\铰链4组新012  ok\STC12C5A.H</PathWithFilename>
+    <PathWithFilename>D:\Keil\c51_umbrella\铰链4组新012  ok\STC12C5A.H</PathWithFilename>
     <TopLine>426</TopLine>
     <CurrentLine>426</CurrentLine>
     <Constant>0</Constant>
@@ -1704,27 +1704,27 @@
       <Documents>
         <Doc>
           <Name>.\main.c</Name>
-          <ColumnNumber>16</ColumnNumber>
-          <TopLine>133</TopLine>
-          <CurrentLine>133</CurrentLine>
+          <ColumnNumber>0</ColumnNumber>
+          <TopLine>67</TopLine>
+          <CurrentLine>81</CurrentLine>
         </Doc>
         <Doc>
           <Name>.\timer0.c</Name>
-          <ColumnNumber>32</ColumnNumber>
-          <TopLine>215</TopLine>
-          <CurrentLine>215</CurrentLine>
+          <ColumnNumber>50</ColumnNumber>
+          <TopLine>19</TopLine>
+          <CurrentLine>19</CurrentLine>
         </Doc>
         <Doc>
           <Name>.\IOcontrol.c</Name>
-          <ColumnNumber>34</ColumnNumber>
-          <TopLine>181</TopLine>
-          <CurrentLine>181</CurrentLine>
+          <ColumnNumber>14</ColumnNumber>
+          <TopLine>184</TopLine>
+          <CurrentLine>184</CurrentLine>
         </Doc>
         <Doc>
           <Name>.\timer1.c</Name>
-          <ColumnNumber>25</ColumnNumber>
-          <TopLine>459</TopLine>
-          <CurrentLine>474</CurrentLine>
+          <ColumnNumber>22</ColumnNumber>
+          <TopLine>465</TopLine>
+          <CurrentLine>485</CurrentLine>
         </Doc>
         <Doc>
           <Name>STC12C5A.H</Name>
@@ -1736,7 +1736,7 @@
           <Name>.\lcdio.c</Name>
           <ColumnNumber>59</ColumnNumber>
           <TopLine>7</TopLine>
-          <CurrentLine>14</CurrentLine>
+          <CurrentLine>8</CurrentLine>
         </Doc>
       </Documents>
     </MDIGroup>

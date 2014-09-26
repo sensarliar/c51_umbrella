@@ -1,4 +1,4 @@
-C51 COMPILER V9.00   TIMER0                                                                09/21/2014 16:12:55 PAGE 1   
+C51 COMPILER V9.00   TIMER0                                                                09/21/2014 19:25:48 PAGE 1   
 
 
 C51 COMPILER V9.00, COMPILATION OF MODULE TIMER0
@@ -62,7 +62,7 @@ line level    source
   52          extern bit enable_timer1;
   53          extern bit enable_timer2;
   54          extern bit enable_timer3;
-C51 COMPILER V9.00   TIMER0                                                                09/21/2014 16:12:55 PAGE 2   
+C51 COMPILER V9.00   TIMER0                                                                09/21/2014 19:25:48 PAGE 2   
 
   55          extern bit enable_timer4;
   56          extern bit enable_timer5;
@@ -126,7 +126,7 @@ line level    source
  114   2                              if(enable_timer3){
  115   3                                      if(++timer3.sec>=100){timer3.sec=0;timer3.hsec++;}
  116   3                                      if(timer3.hsec>=100){timer3.hsec=0;}
-C51 COMPILER V9.00   TIMER0                                                                09/21/2014 16:12:55 PAGE 3   
+C51 COMPILER V9.00   TIMER0                                                                09/21/2014 19:25:48 PAGE 3   
 
  117   3                              }
  118   2      
@@ -190,7 +190,7 @@ line level    source
  176   2      
  177   2                              if(enable_counter5){
  178   3                                      if(++counter5_sec>=WAVE_LEN){
-C51 COMPILER V9.00   TIMER0                                                                09/21/2014 16:12:55 PAGE 4   
+C51 COMPILER V9.00   TIMER0                                                                09/21/2014 19:25:48 PAGE 4   
 
  179   4                                      counter5_sec = 0;
  180   4                                      enable_counter5 = 0;
@@ -254,7 +254,7 @@ MODULE INFORMATION:   STATIC OVERLAYABLE
    CONSTANT SIZE    =   ----    ----
    XDATA SIZE       =   ----    ----
    PDATA SIZE       =   ----    ----
-C51 COMPILER V9.00   TIMER0                                                                09/21/2014 16:12:55 PAGE 5   
+C51 COMPILER V9.00   TIMER0                                                                09/21/2014 19:25:48 PAGE 5   
 
    DATA SIZE        =      1       2
    IDATA SIZE       =   ----    ----
